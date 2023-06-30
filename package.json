@@ -1,0 +1,28 @@
+{
+  "name": "waterjugtest",
+  "version": "1.0.0",
+  "description": "rest api for the water jug problem",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon dev/index.ts",
+    "prod": "node prod/index.js"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "rest",
+    "api",
+    "water-jug"
+  ],
+  "author": "colgate666",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.3.2",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "fastify": "^4.18.0",
+    "zod": "^3.21.4"
+  }
+}
