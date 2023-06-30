@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { WaterJugInput, WaterJugOutput } from "../types/WaterJugTypes";
-import { waterJugSolver } from "../utils/waterjug.solver";
+import { WaterJugInput } from "../types/WaterJugTypes";
+import { WaterJugSolver } from "../utils/waterjug.solver";
 
 export const handleWaterJugInput = async (
     req: FastifyRequest<{ Body: WaterJugInput }>, 
@@ -9,14 +9,21 @@ export const handleWaterJugInput = async (
 
     if (!body.success) {
         return await res.status(400).send({ message: "Invalid request body" })
-    } else if (body.data.z > body.data.x && body.data.z > body.data.y) {
+    }
+    
+    if (!WaterJugSolver.CanSolve(body.data)) {
         return await res.status(200).send({ message: "No solution" })
     }
 
-    const solution = waterJugSolver(body.data.x, body.data.y, body.data.z)
+    const solution = WaterJugSolver.FindSolution(body.data)
+    
+    if (!solution) {
+        return await res.status(500).send({ message: "Could not find solution!" })
+    }
+
     return await res.status(200).send(solution)
 }
 
 export const getWaterJugsStatus = async (req: FastifyRequest, res: FastifyReply) => {
-
+    return await res.status(200).send(WaterJugSolver.GetState())
 }

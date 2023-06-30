@@ -1,7 +1,7 @@
 import fastify from 'fastify';
 import WaterJugRouter from "./routers/waterjug.router"
 
-const server = fastify();
+const server = fastify({ logger: true });
 
 (async () => {
     await server.register(WaterJugRouter, { prefix: "/waterjug" })

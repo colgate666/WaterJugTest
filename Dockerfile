@@ -18,6 +18,6 @@ COPY --from=backend-build /build/prod ./prod
 COPY --from=backend-build /build/package.json .
 COPY --from=backend-build /build/package-lock.json .
 
-RUN npm i --production
+RUN npm i --omit=dev
 
 CMD [ "npm", "run", "prod" ]

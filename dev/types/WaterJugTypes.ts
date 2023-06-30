@@ -1,9 +1,9 @@
 import z from "zod"
 
 export const WaterJugInput = z.object({
-    x: z.number().int().min(0),
-    y: z.number().int().min(0),
-    z: z.number().int().min(0),
+    x: z.number().int().min(1),
+    y: z.number().int().min(1),
+    z: z.number().int().min(1),
 });
 
 const WaterJugOutput = WaterJugInput.omit({
