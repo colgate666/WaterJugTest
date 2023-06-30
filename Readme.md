@@ -56,7 +56,7 @@ The third command will start the API on port 8080.
 
 ## How to use
 The API consists of two endpoints:
-1. POST /waterjug This endpoint expects a JSON input with the values to use to try and solve the Water Jug problem. It will return the steps taken to solve the problem if it found a solution, otherwise it will return an error message.
+1. POST /waterjug This endpoint expects a JSON input with the values to use to try and solve the Water Jug problem. It will return the steps taken to solve the problem if it found a solution, otherwise it will return an error message. The JSON input should look like this: `{"x": 3, "y": 5, "z": 4}`
 
 2. GET /waterjug/status This endpoint will return the steps taken for the last water jug problem solved.
 
