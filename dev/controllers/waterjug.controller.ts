@@ -7,6 +7,7 @@ export const handleWaterJugInput = async (
     res: FastifyReply) => {
     const body = await WaterJugInput.spa(req.body)
 
+    //If the request body is invalid, return a 400
     if (!body.success) {
         return await res.status(400).send({ message: "Invalid request body" })
     }
@@ -15,7 +16,7 @@ export const handleWaterJugInput = async (
         return await res.status(200).send({ message: "No solution" })
     }
 
-    const solution = WaterJugSolver.FindSolution(body.data)
+    const solution = WaterJugSolver.FindSolution(body.data);
     
     if (!solution) {
         return await res.status(500).send({ message: "Could not find solution!" })
@@ -25,5 +26,5 @@ export const handleWaterJugInput = async (
 }
 
 export const getWaterJugsStatus = async (req: FastifyRequest, res: FastifyReply) => {
-    return await res.status(200).send(WaterJugSolver.GetState())
+    return await res.status(200).send(WaterJugSolver.GetState()) //Return the last found solution for the Water Jug problem
 }
